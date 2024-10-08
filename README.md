@@ -1,5 +1,12 @@
 # Motion Panel for Laravel
 
+## Installation
+
+```sh
+composer require motionpanel/motionpanel-laravel
+php artisan vendor:publish --tag=motionpanel
+```
+
 ### Todos
 
 #### Phase #0
@@ -30,7 +37,7 @@
 #### Phase #3
 
 - [ ] CPU load monitoring
-- [ ] Memory load monitoring
+- [ ] Memory load
 
 ### Contributing
 
