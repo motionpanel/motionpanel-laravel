@@ -19,11 +19,11 @@ class MotionPanelLaravelServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'motionpanel');
         $this->publishes([
             __DIR__ . '/../public' => public_path(''),
-        ], 'motionpanel');
+        ], 'motionpanel-assets');
 
         $this->publishes([
             __DIR__ . '/../config/motionpanel.php' => config_path('motionpanel.php'),
-        ], 'motionpanel');
+        ], 'motionpanel-config');
 
     }
 
