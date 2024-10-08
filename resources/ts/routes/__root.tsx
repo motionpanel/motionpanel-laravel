@@ -37,9 +37,9 @@ const menus = [
 export const Route = createRootRoute({
   component: () => (
     <>
-      <div className="dark:bg-black min-h-screen bg-zinc-100 dark:text-white">
+      <div className="text-base dark:bg-black min-h-screen bg-zinc-100 dark:text-white">
         <div className="flex space-x-4">
-          <nav className="flex flex-col w-52 text-zinc-700 text-xs pl-8">
+          <nav className="flex flex-col w-52 text-zinc-700 text-sm pl-8">
             <Link to={`/`} className="py-2 h-16">
               <MotionPanelLogoSvg className="w-full h-full px-4" />
             </Link>

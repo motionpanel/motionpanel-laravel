@@ -45,7 +45,7 @@ export function ListItem(props: Props) {
       onClick={() => onItemClick && onItemClick(job)}
     >
       <div className="flex">
-        <div className="text-sm flex-col space-y-2 flex-1">
+        <div className="flex-col space-y-2 flex-1">
           <Badge className="font-semibold">{job.queue}</Badge>
           <div className="font-semibold">ID: {job.id}</div>
           <div className="flex-col space-y-2">
