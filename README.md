@@ -15,7 +15,7 @@
 
 - [x] Jobs monitoring (Database)
 - [ ] Jobs filter by date (Database)
-- [ ] Jobs detailed panel (Database)
+- [x] Jobs detailed panel (Database)
 - [x] Failed jobs monitoring (Database)
 - [ ] Failed jobs filter by date (Database)
 - [x] Failed jobs detailed panel (Database)
@@ -31,3 +31,11 @@
 
 - [ ] CPU load monitoring
 - [ ] Memory load monitoring
+
+### Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
+
+### License
+
+This project is licensed under the terms of the MIT license. See [LICENSE.md](LICENSE.md) for details.
