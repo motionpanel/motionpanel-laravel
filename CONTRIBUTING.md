@@ -35,10 +35,19 @@ Ensure you have the following installed:
 
 ### Running the Project
 
-1. Start the Laravel development server:
-   ```sh
-   php artisan serve
+1. Add this to your Laravel project `composer.json`
+
+   ```json
+    "repositories": [
+        {
+            "type": "path",
+            "url": "<path to this repo>"
+        }
+   ]
    ```
+
+   then proceed to installation guide in [README.md](README.md)
+
 2. In a new terminal, start Vite:
    ```sh
    npm run dev
