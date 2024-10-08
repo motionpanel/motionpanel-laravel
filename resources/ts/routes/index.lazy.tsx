@@ -1,5 +1,4 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { HOMEPAGE_ROOT_PATH } from "@/config/config";
 import { PageHeader } from "@/components/ui/page-header";
 
 export const Route = createLazyFileRoute("/")({
