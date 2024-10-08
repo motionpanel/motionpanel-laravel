@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import type { Job } from "./types";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { cn, getRelativeDate } from "@/lib/utils";
 interface Props {
   job: Job;
   onDelete?: (job: Job) => void;
@@ -13,6 +13,7 @@ interface Props {
   showDeleteButton?: boolean;
   description?: string;
   className?: string;
+  onItemClick?: (job: Job) => void;
 }
 export function ListItem(props: Props) {
   const {
@@ -26,6 +27,7 @@ export function ListItem(props: Props) {
     showDeleteButton,
     description,
     className,
+    onItemClick,
   } = props;
   return (
     <div
@@ -33,22 +35,28 @@ export function ListItem(props: Props) {
         "rounded",
         "dark:border",
         "dark:border-slate-800",
-        "p-2",
         "hover:bg-zinc-100",
         "transition-colors",
+        "p-4",
+        "cursor-pointer",
         className
       )}
+      onClick={() => onItemClick && onItemClick(job)}
     >
-      <div className="flex justify-between">
-        <div className="flex-col space-y-2">
+      <div className="flex">
+        <div className="flex-col space-y-2 flex-1">
           <div className="flex space-x-2">
             <Badge className="font-semibold">{job.queue}</Badge>
             <Badge>ID: {job.id}</Badge>
           </div>
           <div className="flex-col space-y-2 text-sm">
-            {showCreatedAt && <>Created at {job.created_at}</>}
+            {showCreatedAt && <>Created {getRelativeDate(job.created_at)}</>}
             {showAttempts && <div>{job.attempts} attempts</div>}
-            <div>{showFailedAt && <span>failed at {job.failed_at}</span>}</div>
+            <div>
+              {showFailedAt && (
+                <span>Failed {getRelativeDate(job.failed_at)}</span>
+              )}
+            </div>
             <em className="dark:text-slate-500">{description}</em>
           </div>
         </div>
@@ -57,7 +65,10 @@ export function ListItem(props: Props) {
             <Button
               size="sm"
               variant={"outline"}
-              onClick={() => onRetry && onRetry(job)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onRetry && onRetry(job);
+              }}
             >
               Retry
             </Button>
@@ -66,7 +77,10 @@ export function ListItem(props: Props) {
             <Button
               size="sm"
               variant={"destructive"}
-              onClick={() => onDelete && onDelete(job)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete && onDelete(job);
+              }}
             >
               Delete
             </Button>
