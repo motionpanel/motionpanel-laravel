@@ -50,7 +50,7 @@ For Laravel 9.x, in `config/app.php`:
 Publish the assets:
 
 ```sh
-php artisan vendor:publish --tag=motionpanel-assets
+php artisan vendor:publish --tag=motionpanel-assets --force
 ```
 
 ### Custom Middleware for "/motionpanel/_" and "/api/motionpanel/_"
