@@ -2,8 +2,6 @@ import { ListItem, Job } from "@/modules/Job";
 import { toast } from "sonner";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { HOMEPAGE_ROOT_PATH } from "@/config/config";
-import type { HttpResponse } from "@/types";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyPagePlaceholder } from "@/components/ui/empty-page-placeholder";
 import {
@@ -14,6 +12,12 @@ import {
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { JobView } from "@/modules/Job/job-view";
+import { StatusView } from "@/modules/Job/status-view";
+import {
+  deleteFailedJob,
+  getFailedJobs,
+  retryFailedJob,
+} from "@/modules/Job/api";
 
 export const Route = createLazyFileRoute("/jobs/failed/")({
   component: Jobs,
@@ -21,24 +25,13 @@ export const Route = createLazyFileRoute("/jobs/failed/")({
 
 function Jobs() {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-  const jobsQuery = useQuery<HttpResponse<Job[]>>({
+  const jobsQuery = useQuery({
     queryKey: ["failed-jobs"],
-    queryFn: async () => {
-      const response = await fetch(`/api${HOMEPAGE_ROOT_PATH}/jobs/failed`);
-      return response.json();
-    },
+    queryFn: getFailedJobs,
   });
 
   const deleteJobFailedMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const response = await fetch(
-        `/api${HOMEPAGE_ROOT_PATH}/jobs/failed/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
-      return response.json();
-    },
+    mutationFn: deleteFailedJob,
     onSuccess: () => {
       jobsQuery.refetch();
       toast("Job deleted successfully");
@@ -46,26 +39,19 @@ function Jobs() {
   });
 
   const retryJobMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const response = await fetch(
-        `/api${HOMEPAGE_ROOT_PATH}/jobs/failed/${id}/retry`,
-        {
-          method: "POST",
-        }
-      );
-      return response.json();
-    },
+    mutationFn: retryFailedJob,
     onSuccess: () => {
       jobsQuery.refetch();
       toast("Job retried successfully");
     },
   });
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel>
           <PageHeader>
-            <h1 className="font-medium">Failed Jobs</h1>
+            <h1 className="font-medium flex-1">Failed Jobs</h1>
+            <StatusView />
           </PageHeader>
           <div className="flex flex-col space-y-2 p-4">
             {jobsQuery.isLoading && <div>Loading...</div>}

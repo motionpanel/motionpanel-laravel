@@ -3,8 +3,6 @@ import { ListItem, Job } from "@/modules/Job";
 import { toast } from "sonner";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { HOMEPAGE_ROOT_PATH } from "@/config/config";
-import type { HttpResponse } from "@/types";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyPagePlaceholder } from "@/components/ui/empty-page-placeholder";
 import {
@@ -14,6 +12,8 @@ import {
 } from "@/components/ui/resizable";
 import { JobView } from "@/modules/Job/job-view";
 import { cn } from "@/lib/utils";
+import { StatusView } from "@/modules/Job/status-view";
+import { deleteJob, getJobs } from "@/modules/Job/api";
 
 export const Route = createLazyFileRoute("/jobs/")({
   component: Jobs,
@@ -21,21 +21,13 @@ export const Route = createLazyFileRoute("/jobs/")({
 
 function Jobs() {
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-  const jobsQuery = useQuery<HttpResponse<Job[]>>({
+  const jobsQuery = useQuery({
     queryKey: ["jobs"],
-    queryFn: async () => {
-      const response = await fetch(`/api${HOMEPAGE_ROOT_PATH}/jobs`);
-      return response.json();
-    },
+    queryFn: getJobs,
   });
 
-  const deleteJobFailedMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const response = await fetch(`/api${HOMEPAGE_ROOT_PATH}/jobs/${id}`, {
-        method: "DELETE",
-      });
-      return response.json();
-    },
+  const deleteJobMutation = useMutation({
+    mutationFn: deleteJob,
     onSuccess: () => {
       jobsQuery.refetch();
       toast("Job deleted successfully");
@@ -47,7 +39,8 @@ function Jobs() {
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel>
           <PageHeader>
-            <h1 className="font-medium">Jobs</h1>
+            <h1 className="font-medium flex-1">Jobs</h1>
+            <StatusView />
           </PageHeader>
           <div className="flex flex-col space-y-2 p-4">
             {jobsQuery.isLoading && <div>Loading...</div>}
@@ -75,7 +68,7 @@ function Jobs() {
                     showAttempts
                     showCreatedAt
                     showDeleteButton={!job.reserved_at}
-                    onDelete={() => deleteJobFailedMutation.mutate(job.id)}
+                    onDelete={() => deleteJobMutation.mutate(job.id)}
                     description={
                       job.reserved_at
                         ? "Possibly in progress or will be retried"

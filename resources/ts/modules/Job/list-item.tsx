@@ -45,11 +45,17 @@ export function ListItem(props: Props) {
       onClick={() => onItemClick && onItemClick(job)}
     >
       <div className="flex">
-        <div className="flex-col space-y-2 flex-1">
-          <Badge className="font-semibold">{job.queue}</Badge>
-          <div className="font-semibold">ID: {job.id}</div>
-          <div className="flex-col space-y-2">
-            {showCreatedAt && <>Created {getRelativeDate(job.created_at)}</>}
+        <div className="flex-col flex-1">
+          <Badge className="font-semibold mb-2">{job.queue}</Badge>
+          <div className="flex">
+            <div className="font-semibold">ID: {job.id}</div>
+            {showCreatedAt && (
+              <div className="pl-2">
+                - Created {getRelativeDate(job.created_at)}
+              </div>
+            )}
+          </div>
+          <div className="flex-col">
             {showAttempts && <div>{job.attempts} attempts</div>}
             {showFailedAt && (
               <div className="text-gray-500">

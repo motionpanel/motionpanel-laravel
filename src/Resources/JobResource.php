@@ -2,7 +2,6 @@
 
 namespace MotionPanel\MotionPanelLaravel\Resources;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class JobResource extends JsonResource

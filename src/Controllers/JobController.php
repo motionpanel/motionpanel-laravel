@@ -7,9 +7,37 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Queue\Failed\FailedJobProviderInterface;
 use MotionPanel\MotionPanelLaravel\Resources\JobResource;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
 
 class JobController
 {
+    public function getStatus()
+    {
+        $jobsTableExists = false;
+        $failedJobsTableExists = false;
+        $queueConnection = config('queue.default');
+        if ($queueConnection === 'database') {
+            $jobsTableExists = Schema::hasTable('jobs');
+            $failedJobsTableExists = Schema::hasTable('failed_jobs');
+        }
+        if ($queueConnection === 'database') {
+            return response()->json([
+                'data' => [
+                    'jobs_table_exists' => $jobsTableExists,
+                    'failed_jobs_table_exists' => $failedJobsTableExists,
+                    'queue_connection' => $queueConnection
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'data' => [
+                    'queue_connection' => $queueConnection
+                ]
+            ]);
+        }
+
+    }
+
     public function listJobs()
     {
         $queueConnection = config('queue.default');
