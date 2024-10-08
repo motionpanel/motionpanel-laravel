@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     laravel({
       input: ["resources/ts/app.tsx"],
-      buildDirectory: "motionpanel",
+      buildDirectory: "motionpanel-files",
       refresh: true,
     }),
     TanStackRouterVite({

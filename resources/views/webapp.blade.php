@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     @viteReactRefresh
     {{
-    Vite::useBuildDirectory("motionpanel")
+    Vite::useBuildDirectory("motionpanel-files")
     }}
     @vite('resources/ts/app.tsx')
 </head>

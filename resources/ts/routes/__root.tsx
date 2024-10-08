@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
-import { HOMEPAGE_ROOT_PATH } from "@/config/config";
 import { HomeIcon, ListIcon, TriangleAlert } from "lucide-react";
 import MotionPanelLogoSvg from "../../assets/motion-panel-logo-2.svg?react";
 
@@ -41,14 +40,14 @@ export const Route = createRootRoute({
       <div className="dark:bg-black min-h-screen bg-zinc-100 dark:text-white">
         <div className="flex space-x-4">
           <nav className="flex flex-col w-52 text-zinc-700 text-xs pl-8">
-            <Link to={`${HOMEPAGE_ROOT_PATH}`} className="py-2 h-16">
+            <Link to={`/`} className="py-2 h-16">
               <MotionPanelLogoSvg className="w-full h-full px-4" />
             </Link>
             {/* TODO: active state */}
             {menus.map((menu, i) => (
               <Link
                 key={i}
-                to={`${HOMEPAGE_ROOT_PATH}${menu.path}`}
+                to={`${menu.path}`}
                 className="block px-4 py-2 hover:bg-zinc-200 dark:hover:bg-gray-700 rounded-md transition-colors"
               >
                 <div className="flex items-center space-x-2">
