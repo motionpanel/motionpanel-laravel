@@ -106,6 +106,7 @@ function Jobs() {
             <JobView
               job={selectedJob}
               showRetryButton
+              showFailedAt
               showDeleteButton={!selectedJob.reserved_at}
               onRetry={() => retryJobMutation.mutate(selectedJob.id)}
               onDelete={() => deleteJobFailedMutation.mutate(selectedJob.id)}

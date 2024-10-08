@@ -10,10 +10,22 @@ interface Props {
   showRetryButton?: boolean;
   onDelete?: (job: Job) => void;
   onRetry?: (job: Job) => void;
+  showCreatedAt?: boolean;
+  showAttempts?: boolean;
+  showFailedAt?: boolean;
 }
 
 export function JobView(props: Props) {
-  const { job, showDeleteButton, onDelete, showRetryButton, onRetry } = props;
+  const {
+    job,
+    showDeleteButton,
+    onDelete,
+    showRetryButton,
+    onRetry,
+    showCreatedAt,
+    showAttempts,
+    showFailedAt,
+  } = props;
   const copyJobPayload = () => {
     navigator.clipboard.writeText(JSON.stringify(job, null, 2));
   };
@@ -57,9 +69,17 @@ export function JobView(props: Props) {
             <div>
               On <span className="font-semibold">{job.queue}</span> queue
             </div>
-            <div>
-              At {job.created_at} ({moment(job.created_at).fromNow()})
-            </div>
+            {showCreatedAt && (
+              <div>
+                At {job.created_at} ({moment(job.created_at).fromNow()})
+              </div>
+            )}
+            {showFailedAt && (
+              <div>
+                At {job.failed_at} ({moment(job.failed_at).fromNow()})
+              </div>
+            )}
+            {showAttempts && <div>{job.attempts} attempts</div>}
           </div>
         </div>
         <hr />

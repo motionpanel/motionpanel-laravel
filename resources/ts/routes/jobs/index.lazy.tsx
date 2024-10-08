@@ -92,6 +92,8 @@ function Jobs() {
           {selectedJob && (
             <JobView
               job={selectedJob}
+              showCreatedAt
+              showAttempts
               showDeleteButton={!selectedJob.reserved_at}
             />
           )}
