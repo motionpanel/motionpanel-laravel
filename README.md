@@ -13,9 +13,9 @@ php artisan vendor:publish --tag=motionpanel
 
 - [ ] Support Middleware for "/motion-panel/\*" and "/api/motion-panel/\*"
 - [ ] Release v0.1
-- [ ] Write installation guide
+- [x] Write installation guide
 - [ ] Write development guide
-- [ ] Show tanstack router debugger only in development
+- [x] Show tanstack router debugger only in development
 - [ ] Build UI for exception state (APIs return non 2xx)
 
 #### Phase #1
