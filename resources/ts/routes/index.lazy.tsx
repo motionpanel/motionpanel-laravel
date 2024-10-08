@@ -7,10 +7,8 @@ export const Route = createLazyFileRoute("/")({
 
 function HomePage() {
   return (
-    <div>
-      <PageHeader>
-        <h1 className="font-medium">Home</h1>
-      </PageHeader>
-    </div>
+    <PageHeader>
+      <h1 className="font-medium">Home</h1>
+    </PageHeader>
   );
 }
