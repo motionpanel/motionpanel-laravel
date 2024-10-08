@@ -10,7 +10,12 @@ export function PageHeader(props: Props) {
   return (
     <div
       className={cn(
-        "p-4 shadow-[0px_10px_5px_-10px] shadow-zinc-300",
+        "h-14",
+        "px-4",
+        "border-b",
+        "border-zinc-200",
+        "flex",
+        "items-center",
         className
       )}
     >
