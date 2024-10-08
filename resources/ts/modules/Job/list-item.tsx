@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import type { Job } from "./types";
 import { Badge } from "@/components/ui/badge";
 import { cn, getRelativeDate } from "@/lib/utils";
+import { RotateCcwIcon, Trash2Icon } from "lucide-react";
 interface Props {
   job: Job;
   onDelete?: (job: Job) => void;
@@ -44,45 +45,47 @@ export function ListItem(props: Props) {
       onClick={() => onItemClick && onItemClick(job)}
     >
       <div className="flex">
-        <div className="flex-col space-y-2 flex-1">
-          <div className="flex space-x-2">
-            <Badge className="font-semibold">{job.queue}</Badge>
-            <Badge>ID: {job.id}</Badge>
-          </div>
-          <div className="flex-col space-y-2 text-sm">
+        <div className="text-sm flex-col space-y-2 flex-1">
+          <Badge className="font-semibold">{job.queue}</Badge>
+          <div className="font-semibold">ID: {job.id}</div>
+          <div className="flex-col space-y-2">
             {showCreatedAt && <>Created {getRelativeDate(job.created_at)}</>}
             {showAttempts && <div>{job.attempts} attempts</div>}
-            <div>
-              {showFailedAt && (
-                <span>Failed {getRelativeDate(job.failed_at)}</span>
-              )}
-            </div>
-            <em className="dark:text-slate-500">{description}</em>
+            {showFailedAt && (
+              <div className="text-gray-500">
+                Failed {getRelativeDate(job.failed_at)}
+              </div>
+            )}
+            {description && (
+              <em className="dark:text-slate-500">{description}</em>
+            )}
           </div>
         </div>
-        <div className="flex flex-col space-y-2">
+        <div className="flex space-x-2">
           {showRetryButton && (
             <Button
-              size="sm"
-              variant={"outline"}
+              size="icon"
+              variant="ghost"
+              className="text-indigo-800"
               onClick={(e) => {
                 e.stopPropagation();
                 onRetry && onRetry(job);
               }}
             >
-              Retry
+              <RotateCcwIcon className="w-4 h-4" />
             </Button>
           )}
           {showDeleteButton && (
             <Button
-              size="sm"
-              variant={"destructive"}
+              size="icon"
+              variant="ghost"
+              className="text-red-800"
               onClick={(e) => {
                 e.stopPropagation();
                 onDelete && onDelete(job);
               }}
             >
-              Delete
+              <Trash2Icon className="w-4 h-4" />
             </Button>
           )}
         </div>
