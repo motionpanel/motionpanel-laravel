@@ -1,0 +1,1 @@
+import{c as o,j as e}from"./app-CJD9RsjF.js";import{P as r}from"./page-header-Dj3rLmx0.js";const s=o("/")({component:t});function t(){return e.jsx("div",{children:e.jsx(r,{children:e.jsx("h1",{className:"font-medium",children:"Home"})})})}export{s as Route};
