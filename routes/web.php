@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use MotionPanel\MotionPanelLaravel\Controllers\DashboardController;
+use MotionPanel\MotionPanelLaravel\Global\Controllers\DashboardController;
 
 Route::prefix("/motionpanel")->group(function () {
     Route::get(

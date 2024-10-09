@@ -1,6 +1,6 @@
 <?php
 
-namespace MotionPanel\MotionPanelLaravel\Controllers;
+namespace MotionPanel\MotionPanelLaravel\Global\Controllers;
 
 class DashboardController
 {

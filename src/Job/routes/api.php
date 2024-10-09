@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use MotionPanel\MotionPanelLaravel\Controllers\JobController;
+use MotionPanel\MotionPanelLaravel\Job\Controllers\JobController;
 
 // Define the API routes
 Route::prefix('api')->group(function () {

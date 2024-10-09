@@ -1,6 +1,6 @@
 <?php
 
-namespace MotionPanel\MotionPanelLaravel\Resources;
+namespace MotionPanel\MotionPanelLaravel\Job\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

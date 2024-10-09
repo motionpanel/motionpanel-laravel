@@ -1,6 +1,21 @@
 <?php
 
 return [
-    'web-middleware' => ['web'],
-    'api-middleware' => ['api'],
+    /**
+     * Global configuration
+     */
+    'global' => [
+        'web' => [
+            'middleware' => ['web']
+        ]
+    ],
+
+    /**
+     * Config for Job module
+     */
+    'job' => [
+        'api' => [
+            'middleware' => ['api'],
+        ]
+    ]
 ];

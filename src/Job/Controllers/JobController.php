@@ -1,11 +1,11 @@
 <?php
 
-namespace MotionPanel\MotionPanelLaravel\Controllers;
+namespace MotionPanel\MotionPanelLaravel\Job\Controllers;
 
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Queue\Failed\FailedJobProviderInterface;
-use MotionPanel\MotionPanelLaravel\Resources\JobResource;
+use MotionPanel\MotionPanelLaravel\Job\Resources\JobResource;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 
