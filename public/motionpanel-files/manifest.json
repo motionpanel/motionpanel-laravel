@@ -1,21 +1,21 @@
 {
-  "_index-BgMW9fcS.js": {
-    "file": "assets/index-BgMW9fcS.js",
-    "name": "index",
+  "_circle-spinning-BDIvvxFO.js": {
+    "file": "assets/circle-spinning-BDIvvxFO.js",
+    "name": "circle-spinning",
     "imports": [
       "resources/ts/app.tsx",
-      "_page-header-CdQqzgXf.js"
+      "_page-header-BAaekGCx.js"
     ]
   },
-  "_page-header-CdQqzgXf.js": {
-    "file": "assets/page-header-CdQqzgXf.js",
+  "_page-header-BAaekGCx.js": {
+    "file": "assets/page-header-BAaekGCx.js",
     "name": "page-header",
     "imports": [
       "resources/ts/app.tsx"
     ]
   },
   "resources/ts/app.tsx": {
-    "file": "assets/app-B0RKk_bM.js",
+    "file": "assets/app-BZVehHhf.js",
     "name": "app",
     "src": "resources/ts/app.tsx",
     "isEntry": true,
@@ -26,11 +26,11 @@
       "resources/ts/routes/failed-jobs/index.lazy.tsx"
     ],
     "css": [
-      "assets/app-Bge6Skse.css"
+      "assets/app-CPc63Fej.css"
     ]
   },
   "resources/ts/routes/about.lazy.tsx": {
-    "file": "assets/about.lazy-DiFD_y70.js",
+    "file": "assets/about.lazy-CrcfkiHX.js",
     "name": "about.lazy",
     "src": "resources/ts/routes/about.lazy.tsx",
     "isDynamicEntry": true,
@@ -39,35 +39,35 @@
     ]
   },
   "resources/ts/routes/failed-jobs/index.lazy.tsx": {
-    "file": "assets/index.lazy-6hjW_IN5.js",
+    "file": "assets/index.lazy-CLbXBU1X.js",
     "name": "index.lazy",
     "src": "resources/ts/routes/failed-jobs/index.lazy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/app.tsx",
-      "_index-BgMW9fcS.js",
-      "_page-header-CdQqzgXf.js"
+      "_circle-spinning-BDIvvxFO.js",
+      "_page-header-BAaekGCx.js"
     ]
   },
   "resources/ts/routes/index.lazy.tsx": {
-    "file": "assets/index.lazy-ov_93r-o.js",
+    "file": "assets/index.lazy-B_z5le--.js",
     "name": "index.lazy",
     "src": "resources/ts/routes/index.lazy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/app.tsx",
-      "_page-header-CdQqzgXf.js"
+      "_page-header-BAaekGCx.js"
     ]
   },
   "resources/ts/routes/jobs/index.lazy.tsx": {
-    "file": "assets/index.lazy-CDOgJe1Z.js",
+    "file": "assets/index.lazy-CnEMV7cr.js",
     "name": "index.lazy",
     "src": "resources/ts/routes/jobs/index.lazy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/app.tsx",
-      "_index-BgMW9fcS.js",
-      "_page-header-CdQqzgXf.js"
+      "_circle-spinning-BDIvvxFO.js",
+      "_page-header-BAaekGCx.js"
     ]
   }
 }
