@@ -69,6 +69,17 @@ To ensure your changes do not break existing functionality, run the project's te
 
 This command will execute all the tests and provide you with a report of the results.
 
+### Analyzing Code with PHPStan
+
+To maintain high code quality and catch potential issues early, we use PHPStan for static analysis. Follow these steps to analyze your code:
+
+1. Run the PHPStan analysis script:
+   ```sh
+   composer run-script analyse
+   ```
+
+This command will execute PHPStan and provide you with a report of any issues found in your code. Make sure to address all reported issues before submitting your changes.
+
 ## Code Guidelines
 
 ### PHP

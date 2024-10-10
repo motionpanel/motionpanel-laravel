@@ -43,6 +43,7 @@
   "require-dev": {
     "orchestra/testbench": "^9.5",
     "pestphp/pest": "^3.3",
+    "pestphp/pest-plugin-laravel": "^3.0",
     "phpstan/phpstan": "^1.12"
   },
   "config": {
@@ -54,8 +55,8 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
-    "analyse": "vendor/bin/phpstan analyse",
-    "baseline": "vendor/bin/phpstan analyse --generate-baseline",
+    "analyse": "vendor/bin/phpstan analyse src tests",
+    "baseline": "vendor/bin/phpstan analyse src tests --generate-baseline",
     "test": "vendor/bin/pest",
     "lint": [
       "@php vendor/bin/phpstan analyse --verbose --ansi"

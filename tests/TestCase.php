@@ -1,7 +1,7 @@
 <?php
 
 namespace MotionPanel\MotionPanelLaravel\Tests;
-
+use MotionPanel\MotionPanelLaravel\MotionPanelLaravelServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -14,7 +14,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \MotionPanel\MotionPanelLaravel\MotionPanelLaravelServiceProvider::class,
+            MotionPanelLaravelServiceProvider::class,
         ];
     }
 

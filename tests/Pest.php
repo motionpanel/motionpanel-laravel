@@ -1,5 +1,7 @@
 <?php
 
+use \MotionPanel\MotionPanelLaravel\Tests\TestCase;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -11,4 +13,4 @@
 |
 */
 
-pest()->extend(\MotionPanel\MotionPanelLaravel\Tests\TestCase::class)->in(__DIR__);
+uses(TestCase::class)->in(__DIR__);
