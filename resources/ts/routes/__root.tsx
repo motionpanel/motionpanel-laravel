@@ -29,7 +29,7 @@ const menus = [
   },
   {
     title: "Failed Jobs",
-    path: "/jobs/failed",
+    path: "/failed-jobs",
     icon: <TriangleAlert size={18} strokeWidth={1.8} />,
   },
 ];

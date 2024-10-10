@@ -5,6 +5,7 @@ namespace MotionPanel\MotionPanelLaravel\Job\Controllers;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Queue\Failed\FailedJobProviderInterface;
+use MotionPanel\MotionPanelLaravel\Job\Resources\FailedJobResource;
 use MotionPanel\MotionPanelLaravel\Job\Resources\JobResource;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
@@ -57,7 +58,7 @@ class JobController
     {
         // Get all failed jobs
         $failedJobs = app(FailedJobProviderInterface::class)->all();
-        return JobResource::collection($failedJobs);
+        return FailedJobResource::collection($failedJobs);
     }
 
     function deleteFailedJob($id)

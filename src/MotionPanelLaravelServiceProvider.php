@@ -11,7 +11,7 @@ class MotionPanelLaravelServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'motionpanel');
 
         Route::group(['middleware' => config('motionpanel.global.web.middleware')], function () {
-            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+            $this->loadRoutesFrom(__DIR__ . '/../src/Global/routes/web.php');
         });
 
         $this->publishes([

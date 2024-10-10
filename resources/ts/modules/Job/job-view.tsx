@@ -12,7 +12,6 @@ interface Props {
   onRetry?: (job: Job) => void;
   showCreatedAt?: boolean;
   showAttempts?: boolean;
-  showFailedAt?: boolean;
 }
 
 export function JobView(props: Props) {
@@ -24,7 +23,6 @@ export function JobView(props: Props) {
     onRetry,
     showCreatedAt,
     showAttempts,
-    showFailedAt,
   } = props;
   const copyJobPayload = () => {
     navigator.clipboard.writeText(JSON.stringify(job, null, 2));
@@ -74,11 +72,7 @@ export function JobView(props: Props) {
                 At {job.created_at} ({moment(job.created_at).fromNow()})
               </div>
             )}
-            {showFailedAt && (
-              <div>
-                At {job.failed_at} ({moment(job.failed_at).fromNow()})
-              </div>
-            )}
+
             {showAttempts && <div>{job.attempts} attempts</div>}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { ListItem, Job } from "@/modules/Job";
+import { ListItem, FailedJob } from "@/modules/FailedJob";
 import { toast } from "sonner";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createLazyFileRoute } from "@tanstack/react-router";
@@ -11,20 +11,19 @@ import {
 } from "@/components/ui/resizable";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { JobView } from "@/modules/Job/job-view";
-import { StatusView } from "@/modules/Job/status-view";
+import { FailedJobView } from "@/modules/FailedJob/failed-job-view";
 import {
   deleteFailedJob,
   getFailedJobs,
   retryFailedJob,
-} from "@/modules/Job/api";
+} from "@/modules/FailedJob/api";
 
-export const Route = createLazyFileRoute("/jobs/failed/")({
+export const Route = createLazyFileRoute("/failed-jobs/")({
   component: Jobs,
 });
 
 function Jobs() {
-  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [selectedJob, setSelectedJob] = useState<FailedJob | null>(null);
   const jobsQuery = useQuery({
     queryKey: ["failed-jobs"],
     queryFn: getFailedJobs,
@@ -51,7 +50,6 @@ function Jobs() {
         <ResizablePanel>
           <PageHeader>
             <h1 className="font-medium flex-1">Failed Jobs</h1>
-            <StatusView />
           </PageHeader>
           <div className="flex flex-col space-y-2 p-4">
             {jobsQuery.isLoading && <div>Loading...</div>}
@@ -69,7 +67,7 @@ function Jobs() {
               jobsQuery.data?.data?.map((job) => (
                 <ListItem
                   key={job.id}
-                  job={job}
+                  failedJob={job}
                   className={cn(
                     selectedJob?.id === job.id ? "bg-zinc-100" : undefined,
                     "border",
@@ -89,11 +87,11 @@ function Jobs() {
         <ResizableHandle />
         <ResizablePanel>
           {selectedJob && (
-            <JobView
-              job={selectedJob}
+            <FailedJobView
+              failedJob={selectedJob}
               showRetryButton
               showFailedAt
-              showDeleteButton={!selectedJob.reserved_at}
+              showDeleteButton
               onRetry={() => retryJobMutation.mutate(selectedJob.id)}
               onDelete={() => deleteJobFailedMutation.mutate(selectedJob.id)}
             />

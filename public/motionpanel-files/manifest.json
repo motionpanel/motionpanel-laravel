@@ -1,21 +1,21 @@
 {
-  "_page-header-uzg5tLCo.js": {
-    "file": "assets/page-header-uzg5tLCo.js",
+  "_index-K2X3vo1_.js": {
+    "file": "assets/index-K2X3vo1_.js",
+    "name": "index",
+    "imports": [
+      "resources/ts/app.tsx",
+      "_page-header-CUguciq2.js"
+    ]
+  },
+  "_page-header-CUguciq2.js": {
+    "file": "assets/page-header-CUguciq2.js",
     "name": "page-header",
     "imports": [
       "resources/ts/app.tsx"
     ]
   },
-  "_status-view-CBGKan0S.js": {
-    "file": "assets/status-view-CBGKan0S.js",
-    "name": "status-view",
-    "imports": [
-      "resources/ts/app.tsx",
-      "_page-header-uzg5tLCo.js"
-    ]
-  },
   "resources/ts/app.tsx": {
-    "file": "assets/app-B6RDJg5p.js",
+    "file": "assets/app-BKI5hTUl.js",
     "name": "app",
     "src": "resources/ts/app.tsx",
     "isEntry": true,
@@ -23,14 +23,14 @@
       "resources/ts/routes/about.lazy.tsx",
       "resources/ts/routes/index.lazy.tsx",
       "resources/ts/routes/jobs/index.lazy.tsx",
-      "resources/ts/routes/jobs/failed/index.lazy.tsx"
+      "resources/ts/routes/failed-jobs/index.lazy.tsx"
     ],
     "css": [
-      "assets/app-5xMGu1hq.css"
+      "assets/app-Bge6Skse.css"
     ]
   },
   "resources/ts/routes/about.lazy.tsx": {
-    "file": "assets/about.lazy-CZJVbltL.js",
+    "file": "assets/about.lazy-DVCpJZnz.js",
     "name": "about.lazy",
     "src": "resources/ts/routes/about.lazy.tsx",
     "isDynamicEntry": true,
@@ -38,36 +38,36 @@
       "resources/ts/app.tsx"
     ]
   },
+  "resources/ts/routes/failed-jobs/index.lazy.tsx": {
+    "file": "assets/index.lazy-CQnc1fmV.js",
+    "name": "index.lazy",
+    "src": "resources/ts/routes/failed-jobs/index.lazy.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/ts/app.tsx",
+      "_index-K2X3vo1_.js",
+      "_page-header-CUguciq2.js"
+    ]
+  },
   "resources/ts/routes/index.lazy.tsx": {
-    "file": "assets/index.lazy-Cqlb6A22.js",
+    "file": "assets/index.lazy-BoY4w88j.js",
     "name": "index.lazy",
     "src": "resources/ts/routes/index.lazy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/app.tsx",
-      "_page-header-uzg5tLCo.js"
-    ]
-  },
-  "resources/ts/routes/jobs/failed/index.lazy.tsx": {
-    "file": "assets/index.lazy-BiCPveFr.js",
-    "name": "index.lazy",
-    "src": "resources/ts/routes/jobs/failed/index.lazy.tsx",
-    "isDynamicEntry": true,
-    "imports": [
-      "resources/ts/app.tsx",
-      "_status-view-CBGKan0S.js",
-      "_page-header-uzg5tLCo.js"
+      "_page-header-CUguciq2.js"
     ]
   },
   "resources/ts/routes/jobs/index.lazy.tsx": {
-    "file": "assets/index.lazy-4awndklj.js",
+    "file": "assets/index.lazy-DriOy1wt.js",
     "name": "index.lazy",
     "src": "resources/ts/routes/jobs/index.lazy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/app.tsx",
-      "_status-view-CBGKan0S.js",
-      "_page-header-uzg5tLCo.js"
+      "_index-K2X3vo1_.js",
+      "_page-header-CUguciq2.js"
     ]
   }
 }

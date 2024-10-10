@@ -19,7 +19,7 @@ import { Route as rootRoute } from './routes/__root'
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 const JobsIndexLazyImport = createFileRoute('/jobs/')()
-const JobsFailedIndexLazyImport = createFileRoute('/jobs/failed/')()
+const FailedJobsIndexLazyImport = createFileRoute('/failed-jobs/')()
 
 // Create/Update Routes
 
@@ -38,11 +38,11 @@ const JobsIndexLazyRoute = JobsIndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/jobs/index.lazy').then((d) => d.Route))
 
-const JobsFailedIndexLazyRoute = JobsFailedIndexLazyImport.update({
-  path: '/jobs/failed/',
+const FailedJobsIndexLazyRoute = FailedJobsIndexLazyImport.update({
+  path: '/failed-jobs/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
-  import('./routes/jobs/failed/index.lazy').then((d) => d.Route),
+  import('./routes/failed-jobs/index.lazy').then((d) => d.Route),
 )
 
 // Populate the FileRoutesByPath interface
@@ -63,18 +63,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
+    '/failed-jobs/': {
+      id: '/failed-jobs/'
+      path: '/failed-jobs'
+      fullPath: '/failed-jobs'
+      preLoaderRoute: typeof FailedJobsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/jobs/': {
       id: '/jobs/'
       path: '/jobs'
       fullPath: '/jobs'
       preLoaderRoute: typeof JobsIndexLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/jobs/failed/': {
-      id: '/jobs/failed/'
-      path: '/jobs/failed'
-      fullPath: '/jobs/failed'
-      preLoaderRoute: typeof JobsFailedIndexLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -85,46 +85,46 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/failed-jobs': typeof FailedJobsIndexLazyRoute
   '/jobs': typeof JobsIndexLazyRoute
-  '/jobs/failed': typeof JobsFailedIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/failed-jobs': typeof FailedJobsIndexLazyRoute
   '/jobs': typeof JobsIndexLazyRoute
-  '/jobs/failed': typeof JobsFailedIndexLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/failed-jobs/': typeof FailedJobsIndexLazyRoute
   '/jobs/': typeof JobsIndexLazyRoute
-  '/jobs/failed/': typeof JobsFailedIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/jobs' | '/jobs/failed'
+  fullPaths: '/' | '/about' | '/failed-jobs' | '/jobs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/jobs' | '/jobs/failed'
-  id: '__root__' | '/' | '/about' | '/jobs/' | '/jobs/failed/'
+  to: '/' | '/about' | '/failed-jobs' | '/jobs'
+  id: '__root__' | '/' | '/about' | '/failed-jobs/' | '/jobs/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AboutLazyRoute: typeof AboutLazyRoute
+  FailedJobsIndexLazyRoute: typeof FailedJobsIndexLazyRoute
   JobsIndexLazyRoute: typeof JobsIndexLazyRoute
-  JobsFailedIndexLazyRoute: typeof JobsFailedIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AboutLazyRoute: AboutLazyRoute,
+  FailedJobsIndexLazyRoute: FailedJobsIndexLazyRoute,
   JobsIndexLazyRoute: JobsIndexLazyRoute,
-  JobsFailedIndexLazyRoute: JobsFailedIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -141,8 +141,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
-        "/jobs/",
-        "/jobs/failed/"
+        "/failed-jobs/",
+        "/jobs/"
       ]
     },
     "/": {
@@ -151,11 +151,11 @@ export const routeTree = rootRoute
     "/about": {
       "filePath": "about.lazy.tsx"
     },
+    "/failed-jobs/": {
+      "filePath": "failed-jobs/index.lazy.tsx"
+    },
     "/jobs/": {
       "filePath": "jobs/index.lazy.tsx"
-    },
-    "/jobs/failed/": {
-      "filePath": "jobs/failed/index.lazy.tsx"
     }
   }
 }
