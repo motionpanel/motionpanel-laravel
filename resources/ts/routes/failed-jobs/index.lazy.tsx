@@ -17,6 +17,8 @@ import {
   getFailedJobs,
   retryFailedJob,
 } from "@/modules/FailedJob/api";
+import { ErrorPagePlaceholder } from "@/components/ui/error-page-placeholder";
+import { CircleSpinning } from "@/components/ui/circle-spinning";
 
 export const Route = createLazyFileRoute("/failed-jobs/")({
   component: Jobs,
@@ -52,8 +54,12 @@ function Jobs() {
             <h1 className="font-medium flex-1">Failed Jobs</h1>
           </PageHeader>
           <div className="flex flex-col space-y-2 p-4">
-            {jobsQuery.isLoading && <div>Loading...</div>}
-            {jobsQuery.isError && <div>Error: {jobsQuery.error.message}</div>}
+            {jobsQuery.isLoading && <CircleSpinning className="w-full" />}
+            {jobsQuery.isError && (
+              <ErrorPagePlaceholder>
+                {jobsQuery.error.message}
+              </ErrorPagePlaceholder>
+            )}
             {jobsQuery.isSuccess && jobsQuery.data?.data?.length === 0 && (
               <div className="flex items-center justify-center">
                 <EmptyPagePlaceholder>

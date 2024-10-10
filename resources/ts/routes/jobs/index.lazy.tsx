@@ -14,6 +14,8 @@ import { JobView } from "@/modules/Job/job-view";
 import { cn } from "@/lib/utils";
 import { StatusView } from "@/modules/Job/status-view";
 import { deleteJob, getJobs } from "@/modules/Job/api";
+import { ErrorPagePlaceholder } from "@/components/ui/error-page-placeholder";
+import { CircleSpinning } from "@/components/ui/circle-spinning";
 
 export const Route = createLazyFileRoute("/jobs/")({
   component: Jobs,
@@ -43,8 +45,12 @@ function Jobs() {
             <StatusView />
           </PageHeader>
           <div className="flex flex-col space-y-2 p-4">
-            {jobsQuery.isLoading && <div>Loading...</div>}
-            {jobsQuery.isError && <div>Error: {jobsQuery.error.message}</div>}
+            {jobsQuery.isLoading && <CircleSpinning className="w-full" />}
+            {jobsQuery.isError && (
+              <ErrorPagePlaceholder>
+                {jobsQuery.error.message}
+              </ErrorPagePlaceholder>
+            )}
             {jobsQuery.isSuccess && jobsQuery.data?.data?.length === 0 && (
               <div className="flex items-center justify-center">
                 <EmptyPagePlaceholder>
