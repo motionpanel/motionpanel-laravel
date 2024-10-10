@@ -84,8 +84,11 @@ Once the Motion Panel config is published, go to `config/motionpanel.php` and ad
 - [ ] Failed jobs filter by date (Database)
 - [x] Failed jobs detailed panel (Database)
 - [ ] Jobs monitoring (Redis)
+- [ ] Force delete regardeless the job running or not
 - [ ] Failed jobs monitoring (Redis)
-- [ ] Test support for Laravel 9+
+- [x] Test the support for Laravel 9+
+- [ ] Syntax highlighting for payload and exception
+- [ ] CI to deploy to packagaist
 
 #### Phase #2
 
