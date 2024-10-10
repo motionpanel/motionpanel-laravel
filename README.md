@@ -15,65 +15,47 @@ Motion Panel is an elegant and powerful dashboard designed to help you monitor a
 composer require motionpanel/motionpanel-laravel
 ```
 
-### Register Motion Panel Service Provider:
-
-For Laravel 11.x, in `bootstrap/providers.php`:
-
-```php
-<?php
-
-return [
-    ...
-    MotionPanel\MotionPanelLaravel\MotionPanelLaravelServiceProvider::class,
-];
-```
-
-For Laravel 10.x, in `config/app.php`:
-
-```php
-'providers' => ServiceProvider::defaultProviders()->merge([
-    // Other Service Providers
-
-    App\Providers\ComposerServiceProvider::class,
-])->toArray(),
-```
-
-For Laravel 9.x, in `config/app.php`:
-
-```php
-'providers' => [
-    // Other Service Providers
-    MotionPanel\MotionPanelLaravel\MotionPanelLaravelServiceProvider::class,
-];
-```
-
 Publish the assets:
 
 ```sh
-php artisan vendor:publish --tag=motionpanel-assets --force
+php artisan motionpanel:publish
 ```
 
-### Custom Middleware for "/motionpanel/_" and "/api/motionpanel/_"
+### Authorization
 
-You need to publish the config first:
+The MotionPanel dashboard may be accessed at the /motionpanel route. By default, you will only be able to access this dashboard in the local environment. Within your app/Providers/MotionPanelLaravelServiceProvider.php file, there is an authorization gate definition. This authorization gate controls access to MotionPanel in non-local environments. You are free to modify this gate as needed to restrict access to your MotionPanel installation:
 
-```sh
-php artisan vendor:publish --tag=motionpanel-config
+```php
+/**
+ * Register the MotionPanel gate.
+ *
+ * This gate determines who can access MotionPanel in non-local environments.
+ *
+ * @return void
+ */
+protected function gate()
+{
+    Gate::define('viewMotionPanel', function ($user) {
+        return in_array($user->email, [
+            'tonywei92@gmail.com',
+        ]);
+    });
+}
 ```
-
-Once the Motion Panel config is published, go to `config/motionpanel.php` and add middleware to the `web-middleware` config for web routes under "/motionpanel/_", and to the `api-middleware` config for API routes under "/api/motionpanel/_".
 
 ### Todos
 
 #### Phase #0
 
-- [x] Support Middleware for "/motionpanel/_" and "/api/motionpanel/_"
+- [x] ~~Support Middleware for "/motionpanel/_" and "/api/motionpanel/_"~~
+- [x] Dashboard authorization
 - [x] Release v0.1
 - [x] Write installation guide
-- [ ] Write development guide
+- [x] Write development guide
 - [x] Show tanstack router debugger only in development
-- [ ] Build UI for exception state (APIs return non-2xx)
+- [x] Build UI for exception state (APIs return non-2xx)
 - [x] Build Job status page
+- [ ] Local-only instalation guide
 
 #### Phase #1
 

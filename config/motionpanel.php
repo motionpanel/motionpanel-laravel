@@ -1,21 +1,9 @@
 <?php
+use MotionPanel\MotionPanelLaravel\Global\Middleware\Authorize;
 
 return [
     /**
-     * Global configuration
+     * Middleware for all MotionPanel Routes
      */
-    'global' => [
-        'web' => [
-            'middleware' => ['web']
-        ]
-    ],
-
-    /**
-     * Config for Job module
-     */
-    'job' => [
-        'api' => [
-            'middleware' => ['api'],
-        ]
-    ]
+    'middleware' => ['web', Authorize::class]
 ];

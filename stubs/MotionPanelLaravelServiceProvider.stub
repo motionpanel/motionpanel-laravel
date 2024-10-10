@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Gate;
+use MotionPanel\MotionPanelLaravel\MotionPanelLaravelApplicationServiceProvider;
+
+class MotionPanelLaravelServiceProvider extends MotionPanelLaravelApplicationServiceProvider
+{
+    /**
+     * Register the MotionPanel gate.
+     *
+     * This gate determines who can access MotionPanel in non-local environments.
+     */
+    protected function gate(): void
+    {
+        Gate::define('viewMotionPanel', function ($user) {
+            return in_array($user->email, [
+                //
+            ]);
+        });
+    }
+}

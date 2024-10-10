@@ -54,6 +54,13 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
+  "extra": {
+    "laravel": {
+      "providers": [
+        "MotionPanel\\MotionPanelLaravel\\MotionPanelLaravelServiceProvider"
+      ]
+    }
+  },
   "scripts": {
     "analyse": "vendor/bin/phpstan analyse src tests",
     "baseline": "vendor/bin/phpstan analyse src tests --generate-baseline",

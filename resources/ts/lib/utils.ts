@@ -17,3 +17,26 @@ export function getRelativeDate(date: moment.MomentInput) {
     return targetDate.format("MMMM Do YYYY"); // Show full date (e.g., "October 8th 2024")
   }
 }
+
+export function getCsrfToken() {
+  let tokenElement = document.head.querySelector('meta[name="csrf-token"]');
+  return tokenElement ? tokenElement.getAttribute("content") : null;
+}
+
+export async function fetchWithCsrf(
+  input: RequestInfo,
+  init: RequestInit = {}
+): Promise<Response> {
+  const csrfToken = getCsrfToken();
+
+  // Clone the headers object and add CSRF token if it exists
+  const headers = new Headers(init.headers || {});
+  if (csrfToken) {
+    headers.set("X-CSRF-TOKEN", csrfToken || "");
+  }
+
+  return fetch(input, {
+    ...init,
+    headers,
+  });
+}
