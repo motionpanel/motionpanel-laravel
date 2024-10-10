@@ -57,6 +57,18 @@ Ensure you have the following installed:
    yarn dev
    ```
 
+### Running Tests
+
+To ensure your changes do not break existing functionality, run the project's test suite. The project uses Pest and Testbench for testing, which are already installed.
+
+1. Run the tests:
+
+   ```sh
+   composer run-script test
+   ```
+
+This command will execute all the tests and provide you with a report of the results.
+
 ## Code Guidelines
 
 ### PHP
