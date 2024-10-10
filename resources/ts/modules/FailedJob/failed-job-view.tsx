@@ -23,8 +23,12 @@ export function FailedJobView(props: Props) {
     onRetry,
     showFailedAt,
   } = props;
-  const copyJobPayload = () => {
-    navigator.clipboard.writeText(JSON.stringify(failedJob, null, 2));
+  const copyFailedJobPayload = () => {
+    navigator.clipboard.writeText(failedJob.payload);
+  };
+
+  const copyFailedJobException = () => {
+    navigator.clipboard.writeText(failedJob.exception);
   };
   return (
     <>
@@ -89,7 +93,7 @@ export function FailedJobView(props: Props) {
                     <Button
                       size="icon"
                       variant={"outline"}
-                      onClick={copyJobPayload}
+                      onClick={copyFailedJobPayload}
                     >
                       <CopyIcon className="w-4 h-4" />
                     </Button>
@@ -107,7 +111,7 @@ export function FailedJobView(props: Props) {
                     <Button
                       size="icon"
                       variant={"outline"}
-                      onClick={copyJobPayload}
+                      onClick={copyFailedJobException}
                     >
                       <CopyIcon className="w-4 h-4" />
                     </Button>

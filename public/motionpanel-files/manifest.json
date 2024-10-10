@@ -1,21 +1,21 @@
 {
-  "_index-K2X3vo1_.js": {
-    "file": "assets/index-K2X3vo1_.js",
+  "_index-BgMW9fcS.js": {
+    "file": "assets/index-BgMW9fcS.js",
     "name": "index",
     "imports": [
       "resources/ts/app.tsx",
-      "_page-header-CUguciq2.js"
+      "_page-header-CdQqzgXf.js"
     ]
   },
-  "_page-header-CUguciq2.js": {
-    "file": "assets/page-header-CUguciq2.js",
+  "_page-header-CdQqzgXf.js": {
+    "file": "assets/page-header-CdQqzgXf.js",
     "name": "page-header",
     "imports": [
       "resources/ts/app.tsx"
     ]
   },
   "resources/ts/app.tsx": {
-    "file": "assets/app-BKI5hTUl.js",
+    "file": "assets/app-B0RKk_bM.js",
     "name": "app",
     "src": "resources/ts/app.tsx",
     "isEntry": true,
@@ -30,7 +30,7 @@
     ]
   },
   "resources/ts/routes/about.lazy.tsx": {
-    "file": "assets/about.lazy-DVCpJZnz.js",
+    "file": "assets/about.lazy-DiFD_y70.js",
     "name": "about.lazy",
     "src": "resources/ts/routes/about.lazy.tsx",
     "isDynamicEntry": true,
@@ -39,35 +39,35 @@
     ]
   },
   "resources/ts/routes/failed-jobs/index.lazy.tsx": {
-    "file": "assets/index.lazy-CQnc1fmV.js",
+    "file": "assets/index.lazy-6hjW_IN5.js",
     "name": "index.lazy",
     "src": "resources/ts/routes/failed-jobs/index.lazy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/app.tsx",
-      "_index-K2X3vo1_.js",
-      "_page-header-CUguciq2.js"
+      "_index-BgMW9fcS.js",
+      "_page-header-CdQqzgXf.js"
     ]
   },
   "resources/ts/routes/index.lazy.tsx": {
-    "file": "assets/index.lazy-BoY4w88j.js",
+    "file": "assets/index.lazy-ov_93r-o.js",
     "name": "index.lazy",
     "src": "resources/ts/routes/index.lazy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/app.tsx",
-      "_page-header-CUguciq2.js"
+      "_page-header-CdQqzgXf.js"
     ]
   },
   "resources/ts/routes/jobs/index.lazy.tsx": {
-    "file": "assets/index.lazy-DriOy1wt.js",
+    "file": "assets/index.lazy-CDOgJe1Z.js",
     "name": "index.lazy",
     "src": "resources/ts/routes/jobs/index.lazy.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/ts/app.tsx",
-      "_index-K2X3vo1_.js",
-      "_page-header-CUguciq2.js"
+      "_index-BgMW9fcS.js",
+      "_page-header-CdQqzgXf.js"
     ]
   }
 }
