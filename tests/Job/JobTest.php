@@ -13,7 +13,7 @@ function insertJob()
         [
             'id' => 50,
             'queue' => 'default',
-            'payload' => '{"uuid":"121dfdd4-e9f9-4d39-8fec-7fd923bdf04b","displayName":"App\\Jobs\\TestJob","job":"Illuminate\\Queue\\CallQueuedHandler@call","maxTries":null,"maxExceptions":null,"failOnTimeout":false,"backoff":null,"timeout":null,"retryUntil":null,"data":{"commandName":"App\\Jobs\\TestJob","command":"O:16:\"App\\Jobs\\TestJob\":0:{}"},"telescope_uuid":"9d319f3c-cce5-405d-8cc5-bbb07158eaa7"}',
+            'payload' => '{"uuid":"121dfdd4-e9f9-4d39-8fec-7fd923bdf04b","displayName":"App\\Jobs\\TestJob","job":"Illuminate\\Queue\\CallQueuedHandler@call","maxTries":null,"maxExceptions":null,"failOnTimeout":false,"backoff":null,"timeout":null,"retryUntil":null,"data":{"commandName":"App\\Jobs\\TestJob","command":"O:16:\"App\\Jobs\\TestJob\":0:{}"}}',
             'attempts' => 0,
             'reserved_at' => NULL,
             'available_at' => 1728364505,
