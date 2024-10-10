@@ -1,7 +1,7 @@
 {
   "name": "@motionpanel/motionpanel-laravel",
   "description": "A beautiful dashboard to monitor your laravel application",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": "index.js",
   "type": "module",
   "scripts": {
