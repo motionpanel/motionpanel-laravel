@@ -66,7 +66,7 @@ export function StatusView() {
           <DialogDescription>
             <Table>
               <TableBody>
-                <TableRow>
+                <TableRow className="text-left">
                   <TableCell>Queue driver</TableCell>
                   <TableCell>
                     {jobsSystemStatusQuery.isSuccess &&
@@ -92,7 +92,7 @@ export function StatusView() {
                 {jobsSystemStatusQuery.isSuccess &&
                   jobsSystemStatusQuery.data?.data?.queue_connection ===
                     "database" && (
-                    <TableRow>
+                    <TableRow className="text-left">
                       <TableCell>
                         <code className="bg-slate-600 rounded p-1 text-white text-xs">
                           jobs
@@ -112,30 +112,28 @@ export function StatusView() {
                       </TableCell>
                     </TableRow>
                   )}
-                {jobsSystemStatusQuery.isSuccess &&
-                  jobsSystemStatusQuery.data?.data?.queue_connection ===
-                    "database" && (
-                    <TableRow>
-                      <TableCell>
-                        <code className="bg-slate-600 rounded p-1 text-white text-xs">
-                          failed_jobs
-                        </code>{" "}
-                        database table exists
-                      </TableCell>
-                      <TableCell>
-                        {jobsSystemStatusQuery.data?.data
-                          ?.failed_jobs_table_exists ? (
-                          <span className="inline-flex items-center">
-                            <DotIcon className="text-green-500" /> Yes
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center">
-                            <DotIcon className="text-red-500" /> No
-                          </span>
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  )}
+                {jobsSystemStatusQuery.isSuccess && (
+                  <TableRow className="text-left">
+                    <TableCell>
+                      <code className="bg-slate-600 rounded p-1 text-white text-xs">
+                        failed_jobs
+                      </code>{" "}
+                      database table exists
+                    </TableCell>
+                    <TableCell>
+                      {jobsSystemStatusQuery.data?.data
+                        ?.failed_jobs_table_exists ? (
+                        <span className="inline-flex items-center">
+                          <DotIcon className="text-green-500" /> Yes
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center">
+                          <DotIcon className="text-red-500" /> No
+                        </span>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                )}
               </TableBody>
             </Table>
           </DialogDescription>

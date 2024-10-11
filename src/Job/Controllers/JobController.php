@@ -17,9 +17,9 @@ class JobController
         $jobsTableExists = false;
         $failedJobsTableExists = false;
         $queueConnection = config('queue.default');
+        $failedJobsTableExists = Schema::hasTable('failed_jobs');
         if ($queueConnection === 'database') {
             $jobsTableExists = Schema::hasTable('jobs');
-            $failedJobsTableExists = Schema::hasTable('failed_jobs');
         }
         if ($queueConnection === 'database') {
             return response()->json([
@@ -32,7 +32,8 @@ class JobController
         } else {
             return response()->json([
                 'data' => [
-                    'queue_connection' => $queueConnection
+                    'queue_connection' => $queueConnection,
+                    'failed_jobs_table_exists' => $failedJobsTableExists,
                 ]
             ]);
         }
